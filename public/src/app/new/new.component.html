@@ -1,0 +1,98 @@
+<!-- sample of back end validation from component. make sure variables are defined and the message is keyed correctly on the maincontroller (dictionary key and custom string. if model doesnt contain requirements this will never show) -->
+<!-- <p *ngIf="errorMessage.length > 0">{{errorMessage}}</p> -->
+<!-- sample of front end validation from component (be sure boolean is defined in component and triggered on submit function) -->
+<!-- <p *ngIf="errorBoolean == true">Your title must be at least 3 characters long</p> -->
+<!-- sample of real time validation -->
+<!-- <p *ngIf="newObject.title.length >= 1 && newObject.title.length < 3">Your title must be at least 3 characters</p> -->
+
+<!-- <form (submit)="onSubmit()">
+  <label>Title</label>
+  <input type="text" name="newObject.title" [(ngModel)]="newObject.title">
+  <label>url</label>
+  <input type="text" name="newObject.url" [(ngModel)]="newObject.url">
+
+  <label class="text-success">Rating</label>
+  <select class="text-success form-control-lg" name="newReview.rating" [(ngModel)]="newReview.rating">
+    <option value="5">5 Stars</option>
+    <option value="4">4 Stars</option>
+    <option value="3">3 Stars</option>
+    <option value="2">2 Stars</option>
+    <option value="1">1 Stars</option>
+  </select>
+  <label>Comment</label>
+  <textarea name="newReview.comment" [(ngModel)]="newReview.comment"></textarea>
+  <button type="submit" [disabled]="newObject.title.length < 3 || newObject.url.length < 3">Submit</button>
+</form>
+<button [routerLink]="['/products']">Cancel</button> -->
+
+
+
+<h1 class="text-success">Create a new object!</h1>
+<!-- sample of back end validation from component. make sure variables are defined and the message is keyed correctly on the maincontroller (dictionary key and custom string. if model doesnt contain requirements this will never show) -->
+<h5 class="text-danger" *ngIf="errorMessage.length > 0">{{errorMessage}}</h5>
+<!-- sample of front end validation from component (be sure boolean is defined in component and triggered on submit function) -->
+<h5 class="text-danger" *ngIf="errorBoolean == true && duplicate == true">Title already taken.Choose a different one!</h5>
+<h5 class="text-danger" *ngIf="errorBoolean == true && newObject.title.length < 3">Your title must be at least 3 characters long</h5>
+<h5 class="text-danger" *ngIf="errorBoolean == true && newObject.name.length < 3">Your name must be at least 3 characters long</h5>
+<h5 class="text-danger" *ngIf="errorBoolean == true && newReview.comment.length < 3">Your comment must be at least 3 characters long</h5>
+
+<!-- sample of real time validation -->
+<h5 class="text-warning" *ngIf="newObject.title.length >= 1 && newObject.title.length < 3">Your title must be at least 3 characters</h5>
+<h5 class="text-warning" *ngIf="newObject.name.length >= 1 && newObject.name.length < 3">Your name must be at least 3 characters</h5>
+<h5 class="text-warning" *ngIf="newReview.comment.length >= 1 && newReview.comment.length < 3">Your comment must be at least 3 characters</h5>
+
+<div class="newObjectForm">
+  <form (submit)="onSubmit()">
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Movie Title:</h4>
+      </label>
+      <div class="col-sm-10">
+        <input type="text" name="newObject.title" [(ngModel)]="newObject.title" class="form-control" id="title"
+          placeholder="title">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Your name:</h4>
+      </label>
+      <div class="col-sm-10">
+        <input type="text" name="newObject.name" [(ngModel)]="newObject.name" class="form-control" id="name" placeholder="name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="rating" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Stars:</h4>
+      </label>
+      <div class="col-sm-10">
+        <select class="text-success form-control-lg" name="newReview.rating" [(ngModel)]="newReview.rating">
+          <option value="5">5 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="2">2 Stars</option>
+          <option value="1">1 Stars</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="comment" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Your Review:</h4>
+      </label>
+      <div class="col-sm-10">
+        <textarea name="newReview.comment" [(ngModel)]="newReview.comment" class="form-control" id="comment"
+          placeholder="comment"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" [disabled]="newObject.title.length < 3 || newObject.name.length < 3 || newReview.comment.length <3" class="btn btn-success">Submit</button>
+        <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+      </div>
+    </div>
+  </form>
+
+  <button class="btn btn-secondary" [routerLink]="['/parent']">Cancel</button>
+
+</div>

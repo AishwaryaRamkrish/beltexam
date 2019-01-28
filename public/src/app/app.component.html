@@ -1,0 +1,31 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- {path:'products', component:HomeComponent},
+  // {path:'', pathMatch:'full', redirectTo:'/products'},
+  {path:'products/new', component:NewComponent},
+  {path:'products/edit/:id', component:EditComponent},
+  {path:'products/:id/details', component:DetailsComponent},
+  {path:'parent', component:ParentComponent}, -->
+
+
+<!-- <h1 class = "text-success">Sample Title</h1>
+<button class = "btn btn-primary" [routerLink]="['/products']">Go to Products</button>
+<button class = "btn btn-primary" [routerLink] = "['/parent']">Go to Sample Parent</button>
+<button class = "btn btn-primary" [routerLink] = "['/products/new']">Go to New</button>
+
+<router-outlet></router-outlet> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <!-- <a class="navbar-brand">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['/movies']">Movies</a>
+      <!-- <a class="nav-item nav-link" [routerLink]="['/movies/:id/reviews']">Write a review</a> -->
+      <!-- <a class="nav-item nav-link" [routerLink]="['/products/new']">New</a> -->
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

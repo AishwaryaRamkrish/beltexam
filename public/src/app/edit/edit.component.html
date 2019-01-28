@@ -1,0 +1,50 @@
+<!-- <h1>Editing {{editingObject.title}}</h1>
+<form (submit)="onSubmit()">
+  <label>Title</label>
+  <input type="text" name="editingObject.title" [(ngModel)]="editingObject.title">
+  <label>Url</label>
+  <input type="text" name="editingObject.url" [(ngModel)]="editingObject.url">
+  <button type="submit">Submit</button>
+</form> -->
+
+<h1 class="text-success">Editing the object!</h1>
+<div class="editingObjectForm">
+  <h2 class="text-info">Editing {{editingObject.title}}</h2>
+  <hr>
+  <!-- After submitting form validation -->
+  <h5 class="text-danger" *ngIf = "err_bool === true && edit_duplicate === true">Title already taken.Edit with a different one!</h5>
+  <h5 class="text-danger" *ngIf = "err_bool === true && editingObject.title.length < 3 ">Title must be atleast 3 characters long!</h5>
+  <h5 class="text-danger" *ngIf = "err_bool === true && editingObject.url.length < 3 ">Url must be atleast 3 characters long!</h5>
+
+  <!-- Real time form validation -->
+  <h5 class="text-warning" *ngIf = "editingObject.title.length >= 1 && editingObject.title.length < 3">Warning: The title must be atleast 3 characters long!</h5>
+  <h5 class="text-warning" *ngIf = "editingObject.url.length >= 1 && editingObject.url.length < 3">Warning: The url must be atleast 3 characters long!</h5>
+  <form (submit)="onSubmit()">
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Title</h4>
+      </label>
+      <div class="col-sm-10">
+        <input type="text" name="editingObject.title" [(ngModel)]="editingObject.title" class="form-control" id="title"
+          placeholder="title">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="url" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Url</h4>
+      </label>
+      <div class="col-sm-10">
+        <input type="text" name="editingObject.url" [(ngModel)]="editingObject.url" class="form-control" id="url"
+          placeholder="url">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <!-- <button type="submit" [disabled]="editingObject.title.length < 3 || editingObject.url.length < 3" class="btn btn-success">Submit</button> -->
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+  <button class="btn btn-secondary" [routerLink]="['/movies']">Cancel</button>
+
+</div>

@@ -1,0 +1,10 @@
+.ratingForm{
+    padding: 2%;
+    margin: 2%;
+    border: 5px solid rgb(62, 161, 62);
+    background-color: rgb(218, 218, 230);
+}
+.showone{
+    /* padding: 5%; */
+    margin: 2% 10%;
+}

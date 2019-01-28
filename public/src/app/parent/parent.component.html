@@ -1,0 +1,50 @@
+<!-- <table>
+  <thead>
+    <tr>
+      <th>Object</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let x of listOfObjects">
+      <td>{{x.title}}</td>
+      <td>
+        <button (click)="onSelectForChild(x)">Give to Child</button>
+        <button (click)="onShow(x)">Show</button>
+        <button (click)="onEdit(x)">Edit</button>
+        <button (click)="onDelete(x)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+<h1 class="text-primary"> Squishy tomatoes</h1>
+<div class="showall">
+  <h1 class="text-success"> Movie List</h1>
+  <button class="btn btn-primary" (click)="onSelectForChild()">Add a New Movie</button>
+  <table class="table table-hover table-striped table-dark table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Movie Title</th>
+        <!-- <th scope="col">Average</th> -->
+        <th scope="col">Available Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of listOfObjects">
+        <td>{{x.title}}</td>
+        <!-- <td></td> -->
+        <td>
+          <!-- <button class="btn btn-primary" (click)="onSelectForChild(x)">New</button> -->
+          <button class="btn btn-success" (click)="onShow(x)">Read reviews</button>
+          <!-- <button class="btn btn-warning" (click)="onEdit(x)">Edit a movie</button> -->
+          <button class="btn btn-primary" (click)="onReview(x)">Write a review</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- <app-child *ngIf="selectedObject != null" [childVariable]="selectedObject" (childOutputVariable)="ReceivedChildMessage($event)"></app-child> -->
+<app-child *ngIf="start_bool === true" [childVariable]="listOfObjects" (childOutputVariable)="ReceivedChildMessage($event)"></app-child>

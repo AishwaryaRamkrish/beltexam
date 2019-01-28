@@ -1,0 +1,83 @@
+<!-- <div class = "child">
+  <h3 class = "text-primary">{{childVariable.title}}</h3>
+  <div *ngFor="let x of childVariable.reviews">
+    <h5 class = "text-primary">Comment: {{x.comment}}</h5>
+    <h5 class = "text-primary">Rating: {{x.rating}}</h5>
+  </div>
+  <button class = "btn btn-success" (click)="sendBackToParent()">Go back to parent</button>
+</div> -->
+
+<h1 class = "text-primary"> Squishy tomatoes</h1>
+<h1 class = "text-success">Submit a movie and add your review!</h1>
+<!-- sample of back end validation from component. make sure variables are defined and the message is keyed correctly on the maincontroller (dictionary key and custom string. if model doesnt contain requirements this will never show) -->
+<h5 class="text-danger" *ngIf="errorMessage.length > 0">{{errorMessage}}</h5>
+<!-- sample of front end validation from component (be sure boolean is defined in component and triggered on submit function) -->
+<h5 class="text-danger" *ngIf="errorBoolean == true && duplicate == true">Title already taken.Choose a different one!</h5>
+<h5 class="text-danger" *ngIf="errorBoolean == true && newObject.title.length < 3">Your title must be at least 3 characters long</h5>
+<h5 class="text-danger" *ngIf="errorBoolean == true && newReview.name.length < 3">Your name must be at least 3 characters long</h5>
+<h5 class="text-danger" *ngIf="errorBoolean == true && newReview.comment.length < 3">Your comment must be at least 3 characters long</h5>
+
+<!-- sample of real time validation -->
+<h5 class="text-warning" *ngIf="newObject.title.length >= 1 && newObject.title.length < 3">Your title must be at least 3 characters</h5>
+<h5 class="text-warning" *ngIf="newReview.name.length >= 1 && newReview.name.length < 3">Your name must be at least 3 characters</h5>
+<h5 class="text-warning" *ngIf="newReview.comment.length >= 1 && newReview.comment.length < 3">Your comment must be at least 3 characters</h5>
+
+<div class="newObjectForm">
+  
+  <form (submit)="onSubmit()">
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Movie Title:</h4>
+      </label>
+      <div class="col-sm-10">
+        <input type="text" name="newObject.title" [(ngModel)]="newObject.title" class="form-control" id="title"
+          placeholder="title">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Your name:</h4>
+      </label>
+      <div class="col-sm-10">
+        <input type="text" name="newReview.name" [(ngModel)]="newReview.name" class="form-control" id="name" placeholder="name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="rating" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Stars:</h4>
+      </label>
+      <div class="col-sm-10">
+        <select class="text-success form-control-lg" name="newReview.rating" [(ngModel)]="newReview.rating">
+          <option value="5">5 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="2">2 Stars</option>
+          <option value="1">1 Stars</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="comment" class="col-sm-2 col-form-label">
+        <h4 class="text-primary">Your reviews:</h4>
+      </label>
+      <div class="col-sm-10">
+        <textarea name="newReview.comment" [(ngModel)]="newReview.comment" class="form-control" id="comment"
+          placeholder="comment"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" [disabled]="newObject.title.length < 3 || newReview.name.length < 3 || newReview.comment.length <3" class="btn btn-success">Submit</button>
+        <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+      </div>
+    </div>
+  </form>
+
+  <!-- <button class="btn btn-secondary" [routerLink]="['/products']">Cancel</button> -->
+  <!-- <button class="btn btn-secondary" (click)="cancel()">Cancel</button> -->
+  <button class = "btn btn-success" (click)="sendBackToParent()">Cancel</button>
+
+
+</div>
